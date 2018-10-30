@@ -25,7 +25,6 @@ var first_pike = {
       this.dailyTotal += perHour;
     }
 
-
   },
   render: function () {
     // Line below will generate hourly sales, which also generates customers per hour
@@ -55,3 +54,4 @@ var heading = document.createElement('h3');
   },
 };
 first_pike.render();
+
