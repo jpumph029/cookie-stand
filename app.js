@@ -1,5 +1,5 @@
 'use strict';
-var hoursOpen = ['6:00 am', '7:00 am', '8:00 am', '9:00 am', '10:00 am', '11:00 am', '12:00 pm', '1:00 pm', '2:00 pm', '3:00 pm', '4:00 pm', '5:00 pm', '6:00 pm', '7:00 pm', '8:00 pm'];
+var hoursOpen = ['6:00 am ', '7:00 am ', '8:00 am ', '9:00 am ', '10:00 am ', '11:00 am ', '12:00 pm ', '1:00 pm ', '2:00 pm ', '3:00 pm ', '4:00 pm ', '5:00 pm ', '6:00 pm ', '7:00 pm ', '8:00 pm '];
 
 var stores = [];
 function SalmonCookieStore(name, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
@@ -12,7 +12,7 @@ function SalmonCookieStore(name, minCustPerHour, maxCustPerHour, avgCookiesPerCu
   this.dailyTotal = 0;
   stores.push(this);
   this.render();
-}
+};
 
 SalmonCookieStore.prototype.getAverageCustPerHour = function (min, max) {
   // console.log(hoursOpen)
@@ -20,16 +20,7 @@ SalmonCookieStore.prototype.getAverageCustPerHour = function (min, max) {
     var randomCust = Math.floor(Math.random() * (max - min + 1) + min);
     this.custPerHour.push(randomCust);
   }
-}
-
-// renders the graph 
-SalmonCookieStore.prototype.render = function () {
-  // Line below will generate hourly sales, which also generates customers per hour
-  this.getHourlySales();
-
-  this.tableBody();
-
-}
+};
 
 SalmonCookieStore.prototype.getHourlySales = function () {
   // line below will populate custPerHour
@@ -41,8 +32,28 @@ SalmonCookieStore.prototype.getHourlySales = function () {
     this.dailyTotal += perHour;
   }
 
-}
+};
 
+// renders the graph 
+SalmonCookieStore.prototype.render = function () {
+  // Line below will generate hourly sales, which also generates customers per hour
+  this.getHourlySales();  
+
+// this creates the Body of the Table
+  var tbEl = document.getElementById('tbl-body');
+  var trEl = document.createElement('tr');
+  tbEl.appendChild(trEl);
+  var storeName = document.createElement('th');
+  trEl.appendChild(storeName);
+  storeName.textContent = this.name;
+
+  for (var j = 0; j <= this.cookiesPerHour.length; j++) {
+    var tdEl = document.createElement('td');
+    trEl.appendChild(tdEl);
+    tdEl.textContent = this.cookiesPerHour[j];
+
+  }
+};
 
 // anchors and STARTS the TABLE
 function createTable() {
@@ -62,7 +73,9 @@ function createTable() {
   tbodyEl.id = 'tbl-body';
   tfootEl.id = 'tbl-foot';
   tblEl.className = 'tbl';
-}
+
+  
+};
 createTable();
 
 // creates the TABLE HEAD
@@ -70,25 +83,19 @@ function tableHead() {
   var thEl = document.getElementById('tbl-head');
   var trEl = document.createElement('tr');
   thEl.appendChild(trEl);
+  var tdEl = document.createElement('td');
+  trEl.appendChild(tdEl);
+  
   for (var i = 0; i <= hoursOpen.length; i++) {
-    var tdEl = document.createElement('td');
-    trEl.appendChild(tdEl);
-    tdEl.textContent = hoursOpen[i];
+    var thEl = document.createElement('th');
+    trEl.appendChild(thEl);
+    thEl.textContent = hoursOpen[i];
   }
-}
+};
 tableHead();
+// creates the TABLE FOOTER
+function tableFooter() {
 
-//creates the TABLE BODY 
-SalmonCookieStore.prototype.tableBody = function () {
-
-  var tbEl = document.getElementById('tbl-body');
-  var trEl = document.createElement('tr');
-  tbEl.appendChild(trEl);
-  for (var j = 0; j <= this.cookiesPerHour.length; j++) {
-    var tdEl = document.createElement('td');
-    trEl.appendChild(tdEl);
-    tdEl.textContent = this.cookiesPerHour[j];
-  };
 }
 
 //stores 
@@ -97,3 +104,4 @@ var seaTac = new SalmonCookieStore('SeaTac Airport', 3, 24, 1.2);
 var capHill = new SalmonCookieStore('Capitol Hill', 20, 38, 2.3);
 var sC = new SalmonCookieStore('Seattle Center', 11, 38, 3.7);
 var alki = new SalmonCookieStore('Alki', 2, 16, 4.6);
+
