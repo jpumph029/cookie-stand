@@ -137,6 +137,21 @@ var capHill = new SalmonCookieStore('Capitol Hill', 20, 38, 2.3);
 var sC = new SalmonCookieStore('Seattle Center', 11, 38, 3.7);
 var alki = new SalmonCookieStore('Alki', 2, 16, 4.6);
 
+// document.getElementById('sales-table-form').addEventListener('submit', function(event) {
+//   event.preventDefault();
+
+//   var name = event.target.storename.value;
+//   var min = event.target.min.value;
+//   var max = event.target.max.value;
+//   var avg = event.target.avg.value;
+
+//   new SalmonCookieStore(name, min, max, avg);
+
+//   event.target.storename.value = '';
+//   event.target.min.value = '';
+//   event.target.max.value = '';
+//   event.target.avg.value = '';
+// });
 
 
 tableFooter();

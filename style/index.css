@@ -2,7 +2,12 @@ html {
     background-image: url('../resources/coffee\ shop\ background.jpeg');
     background-size: cover;
 }
-
+table#cookies-table.tbl {
+    top: 200px;
+    left: 300px;
+    position: absolute;
+    background-color: white;
+}
 #salmon {
     z-index: 1;
     -webkit-transform: rotate(-90deg); /* Safari and Chrome */
@@ -13,6 +18,22 @@ html {
     position: fixed;
     left: -250px;
     top: 245px;
+}
+table{
+    position: absolute;
+    background-color: whitesmoke;
+    right: 100px;
+    border: 3px;
+
+}
+#shirt {
+    position: absolute;
+    right: 100px;
+}
+#family {
+    position: absolute;
+    right: 100px;
+    top: 100px;
 }
 a.home{
     position: fixed;
@@ -58,4 +79,9 @@ a.sales {
 color: white;
 position: absolute;
 left: 50%;
+}
+footer {
+    position: absolute;
+    height: 100px;
+    background-color: aliceblue;
 }
