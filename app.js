@@ -24,21 +24,21 @@ SalmonCookieStore.prototype.getAverageCustPerHour = function (min, max) {
 SalmonCookieStore.prototype.getHourlySales = function () {
   // line below will populate custPerHour
   this.getAverageCustPerHour(this.minCustPerHour, this.maxCustPerHour);
-  
+
   for (var i = 0; i < hoursOpen.length; i++) {
     var perHour = Math.round(this.custPerHour[i] * this.avgCookiesPerCust);
     this.cookiesPerHour.push(perHour);
     this.dailyTotal += perHour;
   }
-  
+
 };
 
 // renders the graph 
 SalmonCookieStore.prototype.render = function () {
-  console.log('stores arr',stores);
+  console.log('stores arr', stores);
   // Line below will generate hourly sales, which also generates customers per hour
-  this.getHourlySales();  
-  
+  this.getHourlySales();
+
   // this creates the Body of the Table
   var tbEl = document.getElementById('tbl-body');
   var trEl = document.createElement('tr');
@@ -72,12 +72,12 @@ function createTable() {
   tbodyEl.id = 'tbl-body';
   tfootEl.id = 'tbl-foot';
   tblEl.className = 'tbl';
-  
+
   mainEl.appendChild(tblEl);
   tblEl.appendChild(theadEl);
   tblEl.appendChild(tbodyEl);
   tblEl.appendChild(tfootEl);
-  
+
 };
 createTable();
 
@@ -100,32 +100,32 @@ function tableHead() {
 tableHead();
 // creates the TABLE FOOTER
 function tableFooter() {
-  var tblEl =document.getElementById('cookies-table');
+  var tblEl = document.getElementById('cookies-table');
   var tfootEl = document.getElementById('tbl-foot');
   var trEl = document.createElement('tr');
 
   var emptyThEl = document.createElement('th');
   trEl.appendChild(emptyThEl);
   emptyThEl.textContent = 'Hourly Totals:'
-  
+
   var grandTotal = 0;
-  for(var i = 0; i < hoursOpen.length; i++) {
+  for (var i = 0; i < hoursOpen.length; i++) {
     var tdEl = document.createElement('td');
     var totals = 0;
-    
-    for(var j = 0; j < stores.length; j++) {
+
+    for (var j = 0; j < stores.length; j++) {
       totals += stores[j].cookiesPerHour[i];
-      
+
     }
     tdEl.textContent = totals;
     trEl.appendChild(tdEl);
-    
+
     grandTotal += totals;
   }
   var grandTotalEl = document.createElement('td');
   grandTotalEl.textContent = grandTotal;
   trEl.appendChild(grandTotalEl);
-  
+
   tfootEl.appendChild(trEl);
   tblEl.appendChild(tfootEl);
 
@@ -137,21 +137,19 @@ var capHill = new SalmonCookieStore('Capitol Hill', 20, 38, 2.3);
 var sC = new SalmonCookieStore('Seattle Center', 11, 38, 3.7);
 var alki = new SalmonCookieStore('Alki', 2, 16, 4.6);
 
-// document.getElementById('sales-table-form').addEventListener('submit', function(event) {
-//   event.preventDefault();
-
-//   var name = event.target.storename.value;
-//   var min = event.target.min.value;
-//   var max = event.target.max.value;
-//   var avg = event.target.avg.value;
-
-//   new SalmonCookieStore(name, min, max, avg);
-
-//   event.target.storename.value = '';
-//   event.target.min.value = '';
-//   event.target.max.value = '';
-//   event.target.avg.value = '';
-// });
+// makes the submit button work on the sales page
+document.getElementById('sales-table-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  var name = event.target.storename.value;
+  var min = event.target.min.value;
+  var max = event.target.max.value;
+  var avg = event.target.avg.value;
+  new SalmonCookieStore(name, min, max, avg);
+  event.target.storename.value = '';
+  event.target.min.value = '';
+  event.target.max.value = '';
+  event.target.avg.value = '';
+});
 
 
 tableFooter();
