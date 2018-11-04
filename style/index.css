@@ -1,12 +1,33 @@
+
 html {
     background-image: url('../resources/coffee\ shop\ background.jpeg');
     background-size: cover;
 }
 table#cookies-table.tbl {
+    border-collapse: collapse;
     top: 200px;
-    left: 300px;
+    left: 500px;
     position: absolute;
-    background-color: white;
+    background-color: wheat;
+    height: 300px;
+    width: 265px;
+    border: 3px solid #e28246;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bold;
+}
+div#sales-table {
+    z-index: 6;
+    color: black;
+    position: absolute;
+    top: 550px;
+    left: 500px;
+    width: 220px;
+    background-color: wheat;
+    border: 3px solid #e28246;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bold;
 }
 #salmon {
     z-index: 1;
@@ -19,21 +40,17 @@ table#cookies-table.tbl {
     left: -250px;
     top: 245px;
 }
-table{
-    position: absolute;
-    background-color: whitesmoke;
-    right: 100px;
-    border: 3px;
-
-}
-#shirt {
-    position: absolute;
-    right: 100px;
-}
 #family {
-    position: absolute;
-    right: 100px;
-    top: 100px;
+  position: absolute;
+  left: 742px;
+  top: 550px;
+  width: 310px;
+}
+#chinook {
+  top: 100px;
+  position: absolute;
+  left: 693px;
+  width: 239px; 
 }
 a.home{
     position: fixed;
@@ -45,7 +62,7 @@ a.home{
     left: 100px;
     z-index: 2;
 }
-a.merch {
+a.merchNav {
     position: fixed;
     background-color: bisque;
     width: 150px;
@@ -75,13 +92,89 @@ a.sales {
     left: 100px;
     z-index: 2;
 }
-.welcome {
-color: white;
-position: absolute;
-left: 50%;
+#backgroundcenter {
+    color: white;
+    position: absolute;
+    left: 25%;
+    background-color: black;
+    width: 800px;
+    height: 1200px;
+    top: 0px;
+}
+#salesbackgroundcenter {
+    color: white;
+    position: absolute;
+    left: 25%;
+    background-color: black;
+    width: 800px;
+    height: 900px;
+    top: 0px;
 }
 footer {
-    position: absolute;
+    position: relative;
     height: 100px;
-    background-color: aliceblue;
+    background-color: black;
+    width: 100%;
+    top: 800px;
+    border-top: 10px dotted #e28246;
+    z-index: 3;
+}
+img#frosted-cookie {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  height: 90px;
+}
+td {
+	border-collapse: collapse;
+	border: 2px solid #e28246;
+}
+div#whataresalmon {
+    z-index: 2;
+    color: wheat;
+    position: absolute;
+    text-align: center;
+    left: 475px;
+    top: 100px;
+    font-size: larger;
+    width: 600px;
+}
+
+#salmonCookieHeader {
+    font-size: xx-large;
+}
+div#hoursOpen {
+    display: inline-block;
+    position: relative;
+    left: 450px;
+    color: wheat;
+    z-index: 1;
+    top: 400px;
+}
+div.hoursOpenAll {
+    padding-top: 15px;
+}
+img#cutter {
+    height: 40px;
+    position: absolute;
+    right: 50%;
+}
+h1 {
+    /* text-decoration: underline; */
+    font-style: italic;
+    font-size: xx-large;
+    color: #e28246;
+}
+#shirt {
+  position: absolute;
+    width: 80px;
+    height: 90px;
+    left: 980px;
+    top: 100px; 
+}
+#fish {
+  position: absolute;
+  left: 18px;
+  top: 23px;
+  width: 50px;
 }
